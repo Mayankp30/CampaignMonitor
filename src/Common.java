@@ -5,11 +5,10 @@ import java.util.*;
  */
 public class Common {
 
-    public static int[] mostCommon(int []array) {
+    public static void mostCommon(int []array) {
         LinkedList<Integer> list = new LinkedList<>();
         int i=0;
         int max = 0;
-
         Map<Integer,Integer> map = new HashMap<>();
         for(int a : array) {
             if(map.containsKey(a)) {
@@ -18,6 +17,7 @@ public class Common {
                 map.put(a, 1);
             }
         }
+
         max = Collections.max(map.values());
         for(Map.Entry<Integer,Integer> entry : map.entrySet()) {
             if(entry.getValue() == max) {
@@ -31,14 +31,30 @@ public class Common {
             result[k++]=s;
         }
 
-        return result;
+        for (int a:result) {
+            System.out.println(a);
 
+        }
+
+    }
+
+    boolean unique(String word){
+
+        boolean[] set = new boolean[256];
+        for (int i=0;i<word.length();i++){
+            int val=word.charAt(i);
+            if(set[val]){
+                return false;
+            }
+            set[val]=true;
+        }
+        return false;
     }
 
     public static void main(String[] args) {
 
-        int[] array = {1,2,3,4};
-        System.out.println(mostCommon(array));
+        int[] array = {3,4,4,4,5,6,10};
+        mostCommon(array);
 
     }
 }
